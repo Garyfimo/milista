@@ -64,19 +64,10 @@ public class MainActivity extends AppCompatActivity implements IStoreView, Searc
         tiendaAdapter = new TiendaAdapter(listaTiendas, new TiendaAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Tienda tienda) {
-                startActivity(new Intent(MainActivity.this, ShowProductActivity.class));
+                startActivity(new Intent(MainActivity.this, LocationStoreActivity.class));
             }
         });
         rvTiendas.setAdapter(tiendaAdapter);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override

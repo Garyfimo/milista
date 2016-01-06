@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_search">Busca un producto...</string>
     <string name="title_activity_show_product">ShowProductActivity</string>
+    <string name="title_activity_location_store">Ubicacion de Tiendas</string>
+    <string name="permision_available_fine_location">Permiso de ubicacion disponible</string>
+    <string name="permissions_not_granted">Permiso no aceptado</string>
 </resources>

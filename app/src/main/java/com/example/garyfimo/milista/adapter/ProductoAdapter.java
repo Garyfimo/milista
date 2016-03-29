@@ -70,7 +70,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.Produc
 
         public void bind(final Producto producto, final OnItemClickListener listener) {
             tvProductoName.setText(producto.getProductName());
-            tvProductoPrice.setText(String.valueOf(producto.getProductPrice()));
+            tvProductoPrice.setText(String.format("Precio: S/ " + String.valueOf(producto.getProductPrice())));
             rbProductoRate.setRating(producto.getProductRate());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

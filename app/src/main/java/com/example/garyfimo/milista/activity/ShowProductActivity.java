@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,8 +51,14 @@ public class ShowProductActivity extends AppCompatActivity implements IProductVi
         productPresenter.getProducts();
 
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, getResources().getInteger(R.integer.num_rows));
-        rvProducts.setLayoutManager(layoutManager);
+//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, getResources().getInteger(R.integer.num_rows));
+//        rvProducts.setLayoutManager(layoutManager);
+
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(
+                getResources().getInteger(R.integer.num_rows) , GridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
+        rvProducts.setLayoutManager(staggeredGridLayoutManager);
+
 
         productoAdapter = new ProductoAdapter(productList, new ProductoAdapter.OnItemClickListener() {
             @Override

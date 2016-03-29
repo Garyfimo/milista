@@ -22,7 +22,7 @@ public class StorePresenter {
         tiendas.add(new Tienda("Tottus","Av. Guardia Civil Norte 2304"));
         tiendas.add(new Tienda("Metro","Av. Guardia Civil Norte 2304"));
         tiendas.add(new Tienda("Wong","Av. Guardia Civil Norte 2304"));
-        tiendas.add(new Tienda("wallmart","Av. Guardia Civil Norte 2304"));
+        tiendas.add(new Tienda("Wallmart","Av. Guardia Civil Norte 2304"));
         tiendas.add(new Tienda("Vivanda","Av. Guardia Civil Norte 2304"));
         tiendas.add(new Tienda("Mass","Av. Guardia Civil Norte 2304"));
 

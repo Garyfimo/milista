@@ -11,11 +11,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.OvershootInterpolator;
 import android.widget.Toast;
 
 import com.example.garyfimo.milista.R;
@@ -29,6 +31,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class MainActivity extends AppCompatActivity implements IStoreView, SearchView.OnQueryTextListener {
 
@@ -57,14 +60,21 @@ public class MainActivity extends AppCompatActivity implements IStoreView, Searc
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
 //        rvTiendas.setLayoutManager(linearLayoutManager);
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
+//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 1);
+//        rvTiendas.setLayoutManager(layoutManager);
 
-        rvTiendas.setLayoutManager(layoutManager);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(
+                2, GridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
+
+        rvTiendas.setLayoutManager(staggeredGridLayoutManager);
+        rvTiendas.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(1f)));
 
         tiendaAdapter = new TiendaAdapter(listaTiendas, new TiendaAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Tienda tienda) {
-                startActivity(new Intent(MainActivity.this, LocationStoreActivity.class));
+                startActivity(new Intent(MainActivity.this, ShowProductActivity.class));
+//                startActivity(new Intent(MainActivity.this, LocationStoreActivity.class));
             }
         });
         rvTiendas.setAdapter(tiendaAdapter);
@@ -90,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements IStoreView, Searc
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, MainSettingsActivity.class));
             return true;
         }
 
